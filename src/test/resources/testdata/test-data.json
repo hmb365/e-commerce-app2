@@ -1,0 +1,13 @@
+{
+  "loginData": {
+    "username": "hey@abc.com",
+    "password": "Testing@1234"
+  },
+  "registrationData": {
+    "firstName": "Tarun",
+    "lastName": "Sachdeva",
+    "emailId": "tarun.sachdeva@dpsg.com",
+    "password": "Testing@4321",
+    "title": "Mr."
+  }
+}

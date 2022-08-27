@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Suite" verbose="1" preserve-order="true">
+    <parameter name="browser" value="chrome"></parameter>
+    <test name="Basic Test" >
+        <classes>
+            <class name="com.regression.tests.FirstSeleniumProgram" >
+                <methods>
+                <include name="verifySuccessfulLoginToTheApplication"/>
+                <include name="verifyUnsuccessfulErrorMessageOnLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
