@@ -1,7 +1,9 @@
 package com.envision.automation.application.shoppingcart;
 
 
+import com.envision.automation.framework.reusables.BaseAsserts;
 import com.envision.automation.framework.reusables.BaseUtils;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -36,7 +38,24 @@ public class LandingPage extends BaseUtils {
         typeInto("shoppingCart.LoginPage.tbxEmailAddress",emailAddress);
         return this;
     }
-
+    public LandingPage validateNewsLetterForNewEmail() throws IOException, InterruptedException {
+        typeInto("shoppingCart.LandingPage.tbxNewsLetterEmail","hey@poz.com");
+        Thread.sleep(3000);
+        clickOn("shoppingCart.LandingPage.btnOk");
+        String successfulMsg=waitUntilElementVisibleAndGetText("shoppingCart.LandingPage.txtMsg",10);
+        System.out.println(successfulMsg);
+        Assert.assertEquals("Newsletter : You have successfully subscribed to this newsletter.",successfulMsg);
+        return this;
+    }
+    public LandingPage validateNewsLetterForExistingEmail() throws IOException, InterruptedException {
+        typeInto("shoppingCart.LandingPage.tbxNewsLetterEmail","hey@nyz.com");
+        Thread.sleep(3000);
+        clickOn("shoppingCart.LandingPage.btnOk");
+        String unSuccessfulMsg=waitUntilElementVisibleAndGetText("shoppingCart.LandingPage.txtErrorMsg",10);
+        System.out.println(unSuccessfulMsg);
+        Assert.assertEquals("Newsletter : This email address is already registered.",unSuccessfulMsg);
+        return this;
+    }
     public RegistrationPage clickOnCreateAnAccount() throws IOException {
         clickOn("shoppingCart.LoginPage.btnCreateAnAccount");
         return new RegistrationPage(this.driver);
