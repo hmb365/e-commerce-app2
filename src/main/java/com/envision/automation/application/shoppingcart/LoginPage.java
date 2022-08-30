@@ -3,6 +3,7 @@ package com.envision.automation.application.shoppingcart;
 
 import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
 
@@ -24,6 +25,11 @@ public class LoginPage extends BaseUtils {
         typeInto("shoppingCart.LoginPage.tbxPassword",password);
         return this;
     }
+    //Sarada_TC028
+    public WebElement  forgotPassWordDisplay() throws IOException {
+       WebElement displayForgotPassword = waitUntilElementVisibleAndGetElement("shoppingCart.LoginPage.chkForgotPassword",30);
+        return displayForgotPassword;
+    }
 
     public MyAccountPage clickSubmit() throws IOException {
         clickOn("shoppingCart.LoginPage.btnSubmit");
@@ -35,4 +41,5 @@ public class LoginPage extends BaseUtils {
                 .enterPassword(password)
                 .clickSubmit();
     }
+
 }
