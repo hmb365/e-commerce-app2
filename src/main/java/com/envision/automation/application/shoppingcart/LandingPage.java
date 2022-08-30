@@ -38,24 +38,8 @@ public class LandingPage extends BaseUtils {
         typeInto("shoppingCart.LoginPage.tbxEmailAddress",emailAddress);
         return this;
     }
-    public LandingPage validateNewsLetterForNewEmail() throws IOException, InterruptedException {
-        typeInto("shoppingCart.LandingPage.tbxNewsLetterEmail","hey@poz.com");
-        Thread.sleep(3000);
-        clickOn("shoppingCart.LandingPage.btnOk");
-        String successfulMsg=waitUntilElementVisibleAndGetText("shoppingCart.LandingPage.txtMsg",10);
-        System.out.println(successfulMsg);
-        Assert.assertEquals("Newsletter : You have successfully subscribed to this newsletter.",successfulMsg);
-        return this;
-    }
-    public LandingPage validateNewsLetterForExistingEmail() throws IOException, InterruptedException {
-        typeInto("shoppingCart.LandingPage.tbxNewsLetterEmail","hey@nyz.com");
-        Thread.sleep(3000);
-        clickOn("shoppingCart.LandingPage.btnOk");
-        String unSuccessfulMsg=waitUntilElementVisibleAndGetText("shoppingCart.LandingPage.txtErrorMsg",10);
-        System.out.println(unSuccessfulMsg);
-        Assert.assertEquals("Newsletter : This email address is already registered.",unSuccessfulMsg);
-        return this;
-    }
+
+
     public RegistrationPage clickOnCreateAnAccount() throws IOException {
         clickOn("shoppingCart.LoginPage.btnCreateAnAccount");
         return new RegistrationPage(this.driver);
