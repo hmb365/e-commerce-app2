@@ -1,7 +1,8 @@
 package com.envision.automation.application.shoppingcart;
 
-import com.automation.framework.reusables.BaseAsserts;
-import com.automation.framework.reusables.BaseUtils;
+
+import com.envision.automation.framework.reusables.BaseAsserts;
+import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -9,10 +10,10 @@ import java.io.IOException;
 
 public class MyAccountPage extends BaseUtils {
 
-    WebDriver driver;
+
     public MyAccountPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
+
     }
 
     public boolean isSignOutPresentOnPage() throws IOException {

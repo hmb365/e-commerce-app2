@@ -12,6 +12,7 @@ import java.io.IOException;
 public class LandingPage extends BaseUtils {
 
 
+
     public LandingPage(WebDriver driver){
         super(driver);
     }
