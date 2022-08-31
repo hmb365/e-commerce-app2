@@ -35,10 +35,8 @@ public class LoginPage extends BaseUtils {
     //Sarada_TC029
     public String retrievePassWord() throws IOException {
         clickOn("shoppingCart.LoginPage.chkForgotPassword");
-        waitUntilElementVisibleAndTypeInto("shoppingCart.LoginPage.tbxRetrieve",ConfigurationLoader.configOptions.getExplicitWait(), "hey@abc.com");
+        waitUntilElementVisibleAndTypeInto("shoppingCart.LoginPage.tbxRetrieve",ConfigurationLoader.configOptions.getExplicitWait(), TestJsonGenerator.getDataForLogin("username"));
         clickOn("shoppingCart.LoginPage.lnkRetrieve");
-       // WebElement successMessage = waitUntilElementVisibleAndGetElement("//p[@class='alert alert-success']",30);
-         //       String message = successMessage.getText();
          String successMessage = waitUntilElementVisibleAndGetText("shoppingCart.LoginPage.lnkMessage",ConfigurationLoader.configOptions.getExplicitWait());
         return successMessage;
     }
