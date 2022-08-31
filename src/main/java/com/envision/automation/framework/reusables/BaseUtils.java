@@ -1,6 +1,6 @@
 package com.envision.automation.framework.reusables;
 
-import com.automation.framework.configurations.ConfigurationLoader;
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
