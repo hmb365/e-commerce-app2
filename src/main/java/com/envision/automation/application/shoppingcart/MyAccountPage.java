@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class MyAccountPage extends BaseUtils {
 
-    WebDriver driver;
+
     public MyAccountPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
+
     }
 
     public boolean isSignOutPresentOnPage() throws IOException {

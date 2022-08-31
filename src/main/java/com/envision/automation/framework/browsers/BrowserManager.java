@@ -1,6 +1,5 @@
 package com.envision.automation.framework.browsers;
 
-
 import com.envision.automation.framework.configurations.ConfigurationLoader;
 import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;

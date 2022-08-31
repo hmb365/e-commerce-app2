@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class LoginPage extends BaseUtils {
 
-    WebDriver driver; //so that we can pass the driver to another page
+    //WebDriver driver; //so that we can pass the driver to another page
 
     LoginPage(WebDriver driver){
         super(driver);
-        this.driver = driver;
+        //this.driver = driver;
     }
 
     public LoginPage enterUsername(String username) throws IOException {
@@ -42,7 +42,9 @@ public class LoginPage extends BaseUtils {
     }
 
     public MyAccountPage clickSubmit() throws IOException {
+
         clickOn("shoppingCart.LoginPage.btnSubmit");
+        //clickOn("shoppingCart.LoginPage.btnSubmit");
         return new MyAccountPage(driver);
     }
 

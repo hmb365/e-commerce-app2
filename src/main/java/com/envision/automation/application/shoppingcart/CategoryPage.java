@@ -1,4 +1,12 @@
 package com.envision.automation.application.shoppingcart;
 
-public class CategoryPage {
+import com.envision.automation.framework.reusables.BaseUtils;
+import org.openqa.selenium.WebDriver;
+
+public class CategoryPage extends BaseUtils {
+
+    public CategoryPage(WebDriver driver) {
+        super(driver);
+
+    }
 }
