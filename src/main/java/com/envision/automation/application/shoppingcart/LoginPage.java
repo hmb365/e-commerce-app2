@@ -1,6 +1,8 @@
 package com.envision.automation.application.shoppingcart;
 
 
+import com.envision.automation.application.testDataManager.TestJsonGenerator;
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,8 +29,18 @@ public class LoginPage extends BaseUtils {
     }
     //Sarada_TC028
     public WebElement  forgotPassWordDisplay() throws IOException {
-       WebElement displayForgotPassword = waitUntilElementVisibleAndGetElement("shoppingCart.LoginPage.chkForgotPassword",30);
+       WebElement displayForgotPassword = waitUntilElementVisibleAndGetElement("shoppingCart.LoginPage.chkForgotPassword", ConfigurationLoader.configOptions.getExplicitWait());
         return displayForgotPassword;
+    }
+    //Sarada_TC029
+    public String retrievePassWord() throws IOException {
+        clickOn("shoppingCart.LoginPage.chkForgotPassword");
+        waitUntilElementVisibleAndTypeInto("shoppingCart.LoginPage.tbxRetrieve",ConfigurationLoader.configOptions.getExplicitWait(), "hey@abc.com");
+        clickOn("shoppingCart.LoginPage.lnkRetrieve");
+       // WebElement successMessage = waitUntilElementVisibleAndGetElement("//p[@class='alert alert-success']",30);
+         //       String message = successMessage.getText();
+         String successMessage = waitUntilElementVisibleAndGetText("shoppingCart.LoginPage.lnkMessage",ConfigurationLoader.configOptions.getExplicitWait());
+        return successMessage;
     }
 
     public MyAccountPage clickSubmit() throws IOException {

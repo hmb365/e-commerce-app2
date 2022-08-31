@@ -1,7 +1,8 @@
 package com.envision.automation.framework.browsers;
 
-import com.automation.framework.configurations.ConfigurationLoader;
-import com.automation.framework.reusables.BaseUtils;
+
+import com.envision.automation.framework.configurations.ConfigurationLoader;
+import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;

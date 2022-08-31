@@ -48,6 +48,8 @@ public class BaseAsserts {
         }
     }
 
+
+
     public static void ShouldBeNotDisplayed(WebElement element, String... messageOnFailure){ //var args String...
         if(messageOnFailure.length>0){
             Assert.assertFalse(element.isDisplayed(), messageOnFailure[0]);

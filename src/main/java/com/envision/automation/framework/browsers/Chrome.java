@@ -1,6 +1,7 @@
 package com.envision.automation.framework.browsers;
 
-import com.automation.framework.configurations.ConfigurationLoader;
+
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

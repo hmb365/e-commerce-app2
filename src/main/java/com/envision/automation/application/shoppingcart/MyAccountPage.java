@@ -1,7 +1,8 @@
 package com.envision.automation.application.shoppingcart;
 
-import com.automation.framework.reusables.BaseAsserts;
-import com.automation.framework.reusables.BaseUtils;
+
+import com.envision.automation.framework.reusables.BaseAsserts;
+import com.envision.automation.framework.reusables.BaseUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +17,7 @@ public class MyAccountPage extends BaseUtils {
     }
 
     public boolean isSignOutPresentOnPage() throws IOException {
-        WebElement signOut =waitUntilVisibleAndReturnElement("shoppingCart.MyAccountPage.btnSignOut",20);
+        WebElement signOut =waitUntilVisibleAndReturnElement("shoppingCart.MyAccountPage.btnSignOut",30);
         return signOut.isDisplayed();
     }
 
