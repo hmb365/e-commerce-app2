@@ -6,7 +6,9 @@ import com.envision.automation.application.shoppingcart.MyAccountPage;
 import com.envision.automation.application.testDataManager.TestJsonGenerator;
 import com.envision.automation.framework.reusables.BaseAsserts;
 import com.envision.automation.framework.reusables.BaseTest;
+import com.envision.automation.framework.reusables.Constants;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -24,7 +26,6 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage =landingPage
                 .navigateToWebsite()
                 .clickSignIn();
-
         MyAccountPage myAccountPage =
                 loginPage
                         .loginToApplication(username,password);
@@ -36,7 +37,27 @@ public class LoginTests extends BaseTest {
         BaseAsserts.ShouldBeTrue(status,"SignIn is not displayed");
     }
 
+    @Test
+    //TC_028-Checking forgot password link
+    public void forgotPasswordLinkTest() throws IOException {
+        LandingPage landingPage = new LandingPage(browserManager.getDriver());
+        LoginPage loginPage =landingPage
+                .navigateToWebsite()
+                .clickSignIn();
+        WebElement element =loginPage.forgotPassWordDisplay();
+        BaseAsserts.ShouldBeDisplayed(element, Constants.FORGOT_PASSWORD_DISPLAY_MESSAGE);
+    }
+    @Test
+    //Tc_029- retrieving password link
+    public void retrievePasswordTest() throws IOException {
+        LandingPage landingPage = new LandingPage(browserManager.getDriver());
+        LoginPage loginPage =landingPage
+                .navigateToWebsite()
+                .clickSignIn();
 
+        String message = loginPage.retrievePassWord();
+        BaseAsserts.ShouldBeEqual(message,Constants.PASSWORD_RETRIEVAL_MESSAGE+ TestJsonGenerator.getDataForLogin("username"),"Assertion failed");
+    }
     @Test
     public void validateUnsuccessfulLoginToApplication() throws IOException, InterruptedException {
         LandingPage landingPage = new LandingPage(browserManager.getDriver());

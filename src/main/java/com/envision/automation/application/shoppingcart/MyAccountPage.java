@@ -17,7 +17,7 @@ public class MyAccountPage extends BaseUtils {
     }
 
     public boolean isSignOutPresentOnPage() throws IOException {
-        WebElement signOut =waitUntilVisibleAndReturnElement("shoppingCart.MyAccountPage.btnSignOut",20);
+        WebElement signOut =waitUntilVisibleAndReturnElement("shoppingCart.MyAccountPage.btnSignOut",30);
         return signOut.isDisplayed();
     }
 
