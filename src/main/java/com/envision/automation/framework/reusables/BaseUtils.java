@@ -1,6 +1,5 @@
 package com.envision.automation.framework.reusables;
-
-import com.automation.framework.configurations.ConfigurationLoader;
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,11 +13,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.*;
 import sun.reflect.annotation.ExceptionProxy;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
@@ -191,12 +190,31 @@ public class BaseUtils { //Reusable class to perform selenium actions
                 by = By.tagName(locatorValue);
                 break;
         }
-
         return by;
     }
 
     public void launchApplication(String url){
-        driver.get(url);
+
+        driver.navigate().to(url);
+
+        while (CheckConnection(url)==508){
+            driver.navigate().refresh();
+        }
+
+    }
+
+    public int CheckConnection(String URL){
+        try{
+            URL link = new URL(URL);
+            HttpURLConnection connection = (HttpURLConnection)link.openConnection();
+            connection.setConnectTimeout(1000);
+            connection.connect();
+            return connection.getResponseCode();
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
     }
 
     public void clickOn(String locatorName) throws IOException {
@@ -251,7 +269,6 @@ public class BaseUtils { //Reusable class to perform selenium actions
         }else if(howToSelect.equalsIgnoreCase("ByIndex")){
             selectObj.selectByIndex(Integer.parseInt(listValue));
         }
-
     }
 
     public void acceptAlert() {
@@ -280,7 +297,6 @@ public class BaseUtils { //Reusable class to perform selenium actions
     public void switchToMainPage(){
         driver.switchTo().defaultContent();
     }
-
 
     public void switchToSecondWindow(){
         Set<String> setOfWindows = driver.getWindowHandles();
