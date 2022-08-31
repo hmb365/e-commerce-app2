@@ -1,6 +1,7 @@
 package com.envision.automation.framework.reusables;
 
-import com.automation.framework.configurations.ConfigurationLoader;
+
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -413,7 +414,7 @@ public class BaseUtils { //Reusable class to perform selenium actions
         return element;
     }
 
-    public String waitUntilElementVisibleAndGetText(String locatorName,int noOfSeconds,String textToType) throws IOException {
+    public String waitUntilElementVisibleAndGetText(String locatorName,int noOfSeconds) throws IOException {
         String elementHow =getObjectRepositoryLocator(locatorName);
         String how = elementHow.split(":",2)[0];
         String howValue = elementHow.split(":",2)[1];
@@ -422,6 +423,17 @@ public class BaseUtils { //Reusable class to perform selenium actions
         WebElement element =wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         scrollToElementView(element);
         return element.getText();
+    }
+
+    public WebElement waitUntilElementVisibleAndGetElement(String locatorName,int noOfSeconds) throws IOException {
+        String elementHow =getObjectRepositoryLocator(locatorName);
+        String how = elementHow.split(":",2)[0];
+        String howValue = elementHow.split(":",2)[1];
+        By by =findBy(how,howValue);
+        WebDriverWait wait = new WebDriverWait(driver,noOfSeconds);
+        WebElement element =wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        scrollToElementView(element);
+        return element;
     }
 
     public boolean waitUntilElementDisappears(String locatorName,int noOfSeconds) throws IOException {
