@@ -46,5 +46,6 @@
     <orderEntry type="library" name="Maven: com.github.mifmif:generex:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: dk.brics.automaton:automaton:1.11-8" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.30" level="project" />
+    <orderEntry type="library" name="Maven: com.github.stephenc.monte:monte-screen-recorder:0.7.7.0" level="project" />
   </component>
 </module>
