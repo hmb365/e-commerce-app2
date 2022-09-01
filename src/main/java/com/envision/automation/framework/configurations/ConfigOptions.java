@@ -22,6 +22,11 @@ public class ConfigOptions {
         this.noOfDataSets = noOfDataSets;
     }
 
+    private String testRecordingPath;
+    private boolean recordVideo;
+
+
+
     public  String getBrowserType() {
         return browserType;
     }
@@ -117,5 +122,22 @@ public class ConfigOptions {
     public void setSeleniumHubUrl(String seleniumHubUrl) {
         this.seleniumHubUrl = seleniumHubUrl;
     }
+
+    public String getTestRecordingPath() {
+        return testRecordingPath;
+    }
+
+    public void setTestRecordingPath(String testRecordingPath) {
+        this.testRecordingPath = testRecordingPath;
+    }
+
+    public boolean isRecordVideo() {
+        return recordVideo;
+    }
+
+    public void setRecordVideo(boolean recordVideo) {
+        this.recordVideo = recordVideo;
+    }
+
 
 }

@@ -22,7 +22,6 @@ public class ConfigurationLoader {
     }
 
     public void loadConfigurationsForFramework() throws IOException {
-
         configOptions = new ConfigOptions();
         readConfigFileProperties();
         configOptions.setBrowserType(getProperty("browserType"));
@@ -38,6 +37,8 @@ public class ConfigurationLoader {
         configOptions.setHeadless(Boolean.parseBoolean(getProperty("headless")));
         configOptions.setSeleniumHubUrl(getProperty("seleniumHubUrl"));
         configOptions.setNoOfDataSets(Integer.parseInt(getProperty("noOfDataSets")));
+        configOptions.setTestRecordingPath((getProperty("testRecordingPath")));
+        configOptions.setRecordVideo(Boolean.parseBoolean(getProperty("recordVideo")));
     }
 
 }
