@@ -44,8 +44,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage =landingPage
                 .navigateToWebsite()
                 .clickSignIn();
-        WebElement element =loginPage.forgotPassWordDisplay();
-        BaseAsserts.ShouldBeDisplayed(element, Constants.FORGOT_PASSWORD_DISPLAY_MESSAGE);
+        BaseAsserts.ShouldBeTrue(loginPage.forgotPassWordDisplay(),Constants.FORGOT_PASSWORD_DISPLAY_MESSAGE);
     }
     @Test
     //Tc_029- retrieving password link
