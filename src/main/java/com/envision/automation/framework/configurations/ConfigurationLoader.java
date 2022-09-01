@@ -21,8 +21,6 @@ public class ConfigurationLoader {
         return properties.getProperty(name);
     }
 
-
-
     public void loadConfigurationsForFramework() throws IOException {
         configOptions = new ConfigOptions();
         readConfigFileProperties();
@@ -38,6 +36,7 @@ public class ConfigurationLoader {
         configOptions.setRunOn(getProperty("runOn"));
         configOptions.setHeadless(Boolean.parseBoolean(getProperty("headless")));
         configOptions.setSeleniumHubUrl(getProperty("seleniumHubUrl"));
+        configOptions.setNoOfDataSets(Integer.parseInt(getProperty("noOfDataSets")));
     }
 
 }

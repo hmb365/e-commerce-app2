@@ -7,8 +7,7 @@ import com.envision.automation.application.testDataManager.TestJsonGenerator;
 import com.envision.automation.framework.reusables.BaseAsserts;
 import com.envision.automation.framework.reusables.BaseTest;
 import com.envision.automation.framework.reusables.Constants;
-import org.json.simple.parser.ParseException;
-import org.openqa.selenium.WebElement;
+import com.envision.automation.framework.reusables.DataProviderUtils;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -18,10 +17,9 @@ public class LoginTests extends BaseTest {
     String username = TestJsonGenerator.getDataForLogin("username");
     String password = TestJsonGenerator.getDataForLogin("password");
 
-
-
-    @Test
-    public void validateSuccessfulLoginToApplication() throws IOException, ParseException {
+        //TC_022 - Positive Scenario : Valid Data Login
+    @Test (dataProvider = "LoginDataProvider",dataProviderClass = DataProviderUtils.class)
+    public void validateSuccessfulLoginToApplication(String username,String password) throws IOException {
         LandingPage landingPage = new LandingPage(browserManager.getDriver());
         LoginPage loginPage =landingPage
                 .navigateToWebsite()
@@ -29,6 +27,11 @@ public class LoginTests extends BaseTest {
         MyAccountPage myAccountPage =
                 loginPage
                         .loginToApplication(username,password);
+
+        //TC-022  Ensure that your user name is displayed on home page
+        String userNameDisplay= myAccountPage.userNameDisplay();
+        System.out.println("UserName displayed: "+ userNameDisplay);
+
         boolean status =myAccountPage.isSignOutPresentOnPage();
         BaseAsserts.ShouldBeTrue(status,"SignOut Not displayed");
 
@@ -36,7 +39,6 @@ public class LoginTests extends BaseTest {
         status = landingPage.isSignInDisplayed();
         BaseAsserts.ShouldBeTrue(status,"SignIn is not displayed");
     }
-
     @Test
     //TC_028-Checking forgot password link
     public void forgotPasswordLinkTest() throws IOException {
@@ -46,6 +48,7 @@ public class LoginTests extends BaseTest {
                 .clickSignIn();
         BaseAsserts.ShouldBeTrue(loginPage.forgotPassWordDisplay(),Constants.FORGOT_PASSWORD_DISPLAY_MESSAGE);
     }
+
     @Test
     //Tc_029- retrieving password link
     public void retrievePasswordTest() throws IOException {
@@ -57,8 +60,10 @@ public class LoginTests extends BaseTest {
         String message = loginPage.retrievePassWord();
         BaseAsserts.ShouldBeEqual(message,Constants.PASSWORD_RETRIEVAL_MESSAGE+ TestJsonGenerator.getDataForLogin("username"),"Assertion failed");
     }
-    @Test
-    public void validateUnsuccessfulLoginToApplication() throws IOException, InterruptedException {
+
+    //TC_023 -Negative Scenario: Invalid Data Login
+    @Test (dataProvider = "randomLoginDataProvider",dataProviderClass = DataProviderUtils.class)
+    public void validateUnsuccessfulLoginToApplication(String username,String password) throws IOException {
         LandingPage landingPage = new LandingPage(browserManager.getDriver());
         LoginPage loginPage =landingPage
                 .navigateToWebsite()
@@ -66,10 +71,13 @@ public class LoginTests extends BaseTest {
 
         MyAccountPage myAccountPage =
                 loginPage
-                        .loginToApplication(username,password)
-                        .checkIfSignOutButtonDisplayed();
+                        .loginToApplication(username,password);
 
-        Thread.sleep(30000);
+        //TC-023  receive invalid credentials error message
+        String invalidCredentialsMsgDisplayText= myAccountPage.invalidCredentialsMsgDisplay();
+        System.out.println("Invalid Credentials Msg Display: "+ invalidCredentialsMsgDisplayText);
+
+//        myAccountPage.checkIfSignOutButtonDisplayed();
+
     }
-
 }

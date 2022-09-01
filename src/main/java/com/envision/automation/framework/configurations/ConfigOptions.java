@@ -14,7 +14,14 @@ public class ConfigOptions {
     private  String runOn;
     private  boolean headless;
     private  String seleniumHubUrl;
+    private int noOfDataSets;
+    public int getNoOfDataSets() {
+        return noOfDataSets;
+    }
 
+    public void setNoOfDataSets(int noOfDataSets) {
+        this.noOfDataSets = noOfDataSets;
+    }
 
     public  String getBrowserType() {
         return browserType;
