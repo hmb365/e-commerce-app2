@@ -38,6 +38,8 @@ public class ConfigurationLoader {
         configOptions.setRunOn(getProperty("runOn"));
         configOptions.setHeadless(Boolean.parseBoolean(getProperty("headless")));
         configOptions.setSeleniumHubUrl(getProperty("seleniumHubUrl"));
+        configOptions.setTestRecordingPath((getProperty("testRecordingPath")));
+        configOptions.setRecordVideo(Boolean.parseBoolean(getProperty("recordVideo")));
     }
 
 }

@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.monte.media.Format;
 import org.monte.media.FormatKeys.MediaType;
 import org.monte.media.Registry;
@@ -43,7 +45,19 @@ public class ScreenRecorderUtils extends ScreenRecorder {
  }
 
  public static void startRecord(String methodName) throws Exception {
-  File file = new File(System.getProperty("user.dir")+"/src/test/resources/TestcaseRecording");
+
+  String filePath;
+  if(ConfigurationLoader.configOptions.getTestRecordingPath()==null || ConfigurationLoader.configOptions.getTestRecordingPath().isEmpty()){
+   filePath=System.getProperty("user.dir")+"/src/test/resources/testrecordings";
+  }
+  else
+  {
+   filePath=ConfigurationLoader.configOptions.getTestRecordingPath();
+  }
+
+
+
+  File file = new File(filePath);
   Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
   int width = screenSize.width;
   int height = screenSize.height;

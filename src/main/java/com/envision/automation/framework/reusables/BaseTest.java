@@ -33,14 +33,14 @@ public class BaseTest { //reusable class to perform test actions - opening brows
 
     @BeforeMethod
     public void testcaseRecorderStart(Method method) throws Exception {
-        if(ConfigurationLoader.configOptions.getRunOn().equalsIgnoreCase("local"))
+        if(ConfigurationLoader.configOptions.isRecordVideo() && ConfigurationLoader.configOptions.getRunOn().equalsIgnoreCase("local"))
             ScreenRecorderUtils.startRecord(method.getName());
 
     }
 
     @AfterMethod
     public void testcaseRecorderStop(Method method) throws Exception {
-        if (ConfigurationLoader.configOptions.getRunOn().equalsIgnoreCase("local"))
+        if (ConfigurationLoader.configOptions.isRecordVideo() && ConfigurationLoader.configOptions.getRunOn().equalsIgnoreCase("local"))
             ScreenRecorderUtils.stopRecord();
     }
 
