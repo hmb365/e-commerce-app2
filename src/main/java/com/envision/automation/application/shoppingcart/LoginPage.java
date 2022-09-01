@@ -28,9 +28,9 @@ public class LoginPage extends BaseUtils {
         return this;
     }
     //Sarada_TC028
-    public WebElement  forgotPassWordDisplay() throws IOException {
+    public boolean  forgotPassWordDisplay() throws IOException {
        WebElement displayForgotPassword = waitUntilElementVisibleAndGetElement("shoppingCart.LoginPage.chkForgotPassword", ConfigurationLoader.configOptions.getExplicitWait());
-        return displayForgotPassword;
+        return displayForgotPassword.isDisplayed();
     }
     //Sarada_TC029
     public String retrievePassWord() throws IOException {
