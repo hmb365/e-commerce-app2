@@ -5,17 +5,14 @@ import com.envision.automation.framework.configurations.ConfigurationLoader;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderUtils {
-    //Data Provider is always static method
+
     @DataProvider(name ="LoginDataProvider")
-    public static Object[][] getLoginData(){//[][]2D arrays means multiple Row and multipart cloums
-    return new Object[][]{
+    public static Object[][] getLoginData(){
+        return new Object[][]{
 
-            {"hey@abc.com","Testing@1234"},
-//            {"Invalidemail@abc.com","Testing@1234"},
-//            {"hey@abc.com","InvaidPassword"},
-//            {"Invalidemail@abc.com","InvaidPassword"},
+                {"hey@abc.com","Testing@1234"}
 
-    };
+        };
     }
     @DataProvider(name ="randomLoginDataProvider")
     public static Object[][] getRandomLoginData(){

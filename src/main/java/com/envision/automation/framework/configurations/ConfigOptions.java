@@ -18,7 +18,6 @@ public class ConfigOptions {
     public int getNoOfDataSets() {
         return noOfDataSets;
     }
-
     public void setNoOfDataSets(int noOfDataSets) {
         this.noOfDataSets = noOfDataSets;
     }

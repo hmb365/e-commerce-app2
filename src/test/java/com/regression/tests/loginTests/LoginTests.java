@@ -17,7 +17,7 @@ public class LoginTests extends BaseTest {
     String username = TestJsonGenerator.getDataForLogin("username");
     String password = TestJsonGenerator.getDataForLogin("password");
 
-        //TC_022 - Positive Scenario : Valid Data Login
+    //TC_022 - Positive Scenario : Valid Data Login.
     @Test (dataProvider = "LoginDataProvider",dataProviderClass = DataProviderUtils.class)
     public void validateSuccessfulLoginToApplication(String username,String password) throws IOException {
         LandingPage landingPage = new LandingPage(browserManager.getDriver());
@@ -30,14 +30,8 @@ public class LoginTests extends BaseTest {
 
         //TC-022  Ensure that your user name is displayed on home page
         String userNameDisplay= myAccountPage.userNameDisplay();
-        System.out.println("UserName displayed: "+ userNameDisplay);
+        BaseAsserts.ShouldBeEqual(userNameDisplay,Constants.VALID_USER_NAME,Constants.ASSERTION_USER_MESSAGE);
 
-        boolean status =myAccountPage.isSignOutPresentOnPage();
-        BaseAsserts.ShouldBeTrue(status,"SignOut Not displayed");
-
-        landingPage =myAccountPage.clickSignOut();
-        status = landingPage.isSignInDisplayed();
-        BaseAsserts.ShouldBeTrue(status,"SignIn is not displayed");
     }
     @Test
     //TC_028-Checking forgot password link
@@ -75,9 +69,7 @@ public class LoginTests extends BaseTest {
 
         //TC-023  receive invalid credentials error message
         String invalidCredentialsMsgDisplayText= myAccountPage.invalidCredentialsMsgDisplay();
-        System.out.println("Invalid Credentials Msg Display: "+ invalidCredentialsMsgDisplayText);
-
-//        myAccountPage.checkIfSignOutButtonDisplayed();
+        BaseAsserts.ShouldNoBeEqual(invalidCredentialsMsgDisplayText,Constants.VALID_USER_NAME,Constants.ASSERTION_USER_MESSAGE);
 
     }
 }

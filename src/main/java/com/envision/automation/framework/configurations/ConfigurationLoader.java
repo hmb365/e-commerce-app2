@@ -22,6 +22,7 @@ public class ConfigurationLoader {
     }
 
     public void loadConfigurationsForFramework() throws IOException {
+
         configOptions = new ConfigOptions();
         readConfigFileProperties();
         configOptions.setBrowserType(getProperty("browserType"));

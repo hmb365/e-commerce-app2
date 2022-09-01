@@ -11,17 +11,16 @@ import java.io.IOException;
 
 public class MyAccountPage extends BaseUtils {
 
-
     public MyAccountPage(WebDriver driver){
         super(driver);
 
     }
-    //TC-022  Ensure that your user name is displayed on home page
+
+    //TC-022  Ensure that your user name is displayed on home page.
     public String userNameDisplay() throws IOException {
         String userNameDisplayText = waitUntilElementVisibleAndGetText("shoppingCart.LoginPage.userNameDisplay", ConfigurationLoader.configOptions.getExplicitWait());
         return userNameDisplayText;
     }
-
     //TC-023  receive invalid credentials error message
     public String invalidCredentialsMsgDisplay() throws IOException {
         String invalidCredentialsMsgDisplayText = waitUntilElementVisibleAndGetText("shoppingCart.LoginPage.invalidCredentialsMsgDisplayText", ConfigurationLoader.configOptions.getExplicitWait());
